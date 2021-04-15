@@ -46,8 +46,9 @@ X_train.head()
 from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
 from tensorflow.keras.preprocessing.text import Tokenizer
-import 
+
 
 ### PORTER STEMMER 
 
@@ -63,7 +64,12 @@ for i, w in enumerate(query):
 query_train[0]
 
 # Vocab initialize
-vocab = {}      
+vocab = {}  
+# from nltk import FreqDist
+# vocab = FreqDist(np.hstack(sentences))
+# 
+
+s = PorterStemmer()  #Stemming 
 
 # STOP WORDS
 stop_words = set(stopwords.words('english'))
@@ -74,30 +80,29 @@ for i in range(200):
     result = []                 # Initialize as list
     for w in query_train[i]:
         w = w.lower()           # Lowering
+         
         if w not in stop_words: # Stopwords
-            result.append(w)
+            w = s.stem(w)
+            result.append(w)    # Stemming 
             
-            if w not in vocab:  # Vocab forming
-                vocab[w] = 0
-            vocab[w] += 1        
-                
+            if w not in vocab:  
+                vocab[w] = 0    # Vocab Dictionary
+            vocab[w] += 1                      
     query_stop[i] = result      # np.array
-query_stop[0]
+    
+query_stop[0]    
+tokenizer = Tokenizer()   # Keras Tokenizer                 # 간단 방법: fit_on_texts
+[tokenizer.fit_on_texts(query_stop[i]) for i in range(200)] # 빈도수를 기준으로 단어 집합을 생성
+encoded = [tokenizer.texts_to_sequences(query_stop[i]) for i in range(200)]  # Indexing 
 
+# Manual Vocab
 vocab_sorted = sorted(vocab.items(), key = lambda x:x[1], reverse = True)
 print(vocab_sorted)
+vocab_sorted[0]
 
 # Vocab Indexing   
- 
-word_to_index = {word[0] : index + 1 for index, word in enumerate(vocab_sorted)}
+ word_to_index = {word[0] : index + 1 for index, word in enumerate(vocab_sorted)}
 print(word_to_index)
-
-tokenizer = Tokenizer()
-
-
-encoded = tokenizer.texts_to_sequences(tokenized_doc)
-
-
 
 #%% 2) Passage  
 
