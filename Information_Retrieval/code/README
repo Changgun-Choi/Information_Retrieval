@@ -1,0 +1,8 @@
+README
+
+preprocess: helper function for preprocessing: preprocess(sentence) 
+
+feature_computation: computes bm25 for a small training sample. tf_idf data is needed to run.
+
+tf_idf_creation: Creates tf_idf dictionnary, sequentially because it takes a lot of time.
+ 
