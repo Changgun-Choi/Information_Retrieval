@@ -109,7 +109,7 @@ vocab_sorted[0]
   #vocab = FreqDist(np.hstack(query_stop))
   
 # 2) Manual Integer Encoding
-# Manual Vocab sorted  #sorted key: 정렬기준 -> 여기서는 x의 index 1이니까 2번째 것: Frequency
+# Manual Vocab sorted  #sorted key: depoends on x[1] means 2nd index : Frequency
 vocab_sorted = sorted(vocab.items(), key = lambda x:x[1] , reverse = True)
 print(vocab_sorted)
 vocab_sorted[0]  
@@ -158,7 +158,7 @@ model.add(Dense(1, activation='sigmoid'))
 model.summary()
 
 
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])               # 더하기 validation_data=(x_val, y_val),
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])         #validation_data=(x_val, y_val),
 model.fit(X_train, y_train, batch_size = 64, validation_split= 0.2, epochs=100, verbose=2) #validation_split= 0.2                     
 
 e = model.layers[0]
@@ -182,8 +182,8 @@ print("predictions shape:", predictions.shape)
 
 
 # Integer Encoding with Keras Tokenizer      
-#tokenizer = Tokenizer()   # Keras Tokenizer                 # 간단 방법: fit_on_texts
-#[tokenizer.fit_on_texts(query_stop[i]) for i in range(200)] # 빈도수를 기준으로 단어 집합을 생성
+#tokenizer = Tokenizer()   # Keras Tokenizer                 # Easy way: fit_on_texts
+#[tokenizer.fit_on_texts(query_stop[i]) for i in range(200)] # Make Vocabulary depends on Frequency
 #encoded = [tokenizer.texts_to_sequences(query_stop[i]) for i in range(200)]  # Indexing 
 #encoded[0]
 
