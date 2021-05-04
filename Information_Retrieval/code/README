@@ -2,7 +2,7 @@ README
 
 preprocess: helper function for preprocessing: preprocess(sentence) 
 
-feature_computation: computes bm25 for a small training sample. tf_idf data is needed to run.
+feature_computation: computes bm25 and bert sentence embeddings (based on contextualized word embeddings) for a small training sample. idf data is needed to run.
 
-tf_idf_creation: Creates tf_idf dictionnary, sequentially because it takes a lot of time.
+bert_embeddings: Defines a function to compute the similarity based on bert embeddings between a query and a passage.
  
