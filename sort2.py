@@ -55,7 +55,7 @@ for id in unqiue_ids:
     a = datetime.datetime.now()
     matrix = []
     data_ma = from_data_to_array(data[data[:, 0] == id])
-    for i in range(0, len(data)):
+    for i in range(0, len(data_ma)):
         matrix.append(
             [data[i, 0], data[i, 1], cosine(sbert_model.encode([data_ma[i][0]])[0], sbert_model.encode(data_ma[i][1]))])
     matrix = sorted(matrix, key=take_third, reverse=True)
