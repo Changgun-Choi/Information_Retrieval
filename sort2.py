@@ -57,7 +57,7 @@ for id in unqiue_ids:
     data_ma = from_data_to_array(data[data[:, 0] == id])
     for i in range(0, len(data_ma)):
         matrix.append(
-            [data[i, 0], data[i, 1], cosine(sbert_model.encode([data_ma[i][0]])[0], sbert_model.encode(data_ma[i][1]))])
+            [data_ma[i, 0], data_ma[i, 1], cosine(sbert_model.encode([data_ma[i][0]])[0], sbert_model.encode(data_ma[i][1]))])
     matrix = sorted(matrix, key=take_third, reverse=True)
     with open("/Users/kaibaeuerle/PycharmProjects/sentenceBert/result/" + str(id) + ".csv", 'w', newline='') as file:
         mywriter = csv.writer(file, delimiter=',')
