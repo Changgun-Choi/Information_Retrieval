@@ -17,7 +17,7 @@ passage = pd.read_csv(
 passage = passage.to_numpy()
 data = pd.read_csv(
     "/Users/kaibaeuerle/PycharmProjects/sentenceBert/all.csv",
-    sep=",", header=None)
+    sep=",", header=None, nrows=1010)
 data = data.to_numpy()
 unqiue_ids = np.unique(data[:, 0])
 sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
@@ -46,7 +46,7 @@ def cosine(u, v):
 def from_data_to_array(data):
     data_ma = []
     for row in data:
-        data_ma.append([remove_punctuation(queries[queries[:, 0] == row[0], 1][0].lower()),
+        data_ma.append([row[0], row[1], remove_punctuation(queries[queries[:, 0] == row[0], 1][0].lower()),
                         remove_punctuation(passage[passage[:, 0] == row[1], 1][0].lower())])
     return data_ma
 
@@ -57,7 +57,8 @@ for id in unqiue_ids:
     data_ma = from_data_to_array(data[data[:, 0] == id])
     for i in range(0, len(data_ma)):
         matrix.append(
-            [data_ma[i, 0], data_ma[i, 1], cosine(sbert_model.encode([data_ma[i][0]])[0], sbert_model.encode(data_ma[i][1]))])
+            [data_ma[i][0], data_ma[i][1],
+             cosine(sbert_model.encode([data_ma[i][2]])[0], sbert_model.encode(data_ma[i][3]))])
     matrix = sorted(matrix, key=take_third, reverse=True)
     with open("/Users/kaibaeuerle/PycharmProjects/sentenceBert/result/" + str(id) + ".csv", 'w', newline='') as file:
         mywriter = csv.writer(file, delimiter=',')
