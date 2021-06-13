@@ -1,0 +1,28 @@
+README
+
+preprocess: helper function for preprocessing: preprocess(sentence) 
+
+idf_creation: Creates idf dictionnary, sequentially because it takes a lot of time.
+
+functions: functions to compute bm25, bert and sbert embeddings are defined.
+
+estimate_avg_passage_length: estimates average passage length of the passages by looking at a subset of them.
+
+bm25_parameter_tuning: Performs hyperparameter tuning for b and k (bm25). Own implementation of successive halving.
+
+feature_comp_pointwise: computes bm25, bert and sbert embeddings for 20 000 pointwise observations. Saves this data.
+
+feature_comp_pairwise: computes bm25, bert and sbert embeddings for 20 000 pairwise observations. Saves this data.
+
+model_training_pointwise: trains the logistic regression ranking function for the pointwise data. Scaler and model are saved.
+
+model_training_pairwise: trains the logistic regression ranking function for the pairwise data. Scaler and model are saved.
+
+create_eval_set: Creates evaluation set based on the file "all.csv": Calculates bm25, bert and sbert embeddings.
+
+logreg_eval: Ranks the evaluation data according to the pointwise and pairwise feature-based models. For each query, one file with the ranking according
+	to the pointwise model, and one file with the ranking for the pairwise model is saved.
+
+ 
+
+
