@@ -1,5 +1,9 @@
 This directory consits all code, which is were used during the project.
 Its splited into 'Approaches', whoch contain a folder for each approache. Furtermore, there is a hybrid approach file, which combines the approaches.
+The approaches are:
+  - Feature-based: BM25, pretrained BERT and pretrained SBERT
+  - Fine-tuned Bert
+  - Fine-tuned XLNet
 
 The other folder contains all code, which is used for evaluation the different methods. 
 
