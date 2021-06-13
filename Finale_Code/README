@@ -1,0 +1,12 @@
+This directory consits all code, which is were used during the project.
+Its splited into 'Approaches', whoch contain a folder for each approache. Furtermore, there is a hybrid approach file, which combines the approaches.
+
+The other folder contains all code, which is used for evaluation the different methods. 
+
+To use the code the data from MSMARCO have to be downloaded fist.
+
+In case, questions occur, feel free to contact us:
+
+ChangGun Choi:    cchoi@mail.uni-mannheim.de
+Moritz Huurdeman: mhuurdem@mail.uni-mannheim.de
+Kai Baeuerle:     kabaeuer@mail.uni-mannheim.de
