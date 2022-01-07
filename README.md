@@ -1,2 +1,2 @@
-# Information_Retrieval Project
-  Kai Bäuerle, ChangGun Choi, Moritz Huurdeman
+# Information_Retrieval (Learning to Rank)
+  ChangGun Choi, Kai Bäuerle, , Moritz Huurdeman
