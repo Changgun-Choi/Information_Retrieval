@@ -1,2 +1,2 @@
 # Information_Retrieval Project
-# Kai Bäuerle, ChangGun Choi, Moritz Huurdeman
+  Kai Bäuerle, ChangGun Choi, Moritz Huurdeman
